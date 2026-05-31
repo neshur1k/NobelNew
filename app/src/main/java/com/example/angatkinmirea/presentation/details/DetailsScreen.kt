@@ -23,15 +23,16 @@ fun DetailsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(top = 60.dp)
+            .padding(horizontal = 16.dp)
     ) {
-        /*
+
         Button(
             onClick = onBack
         ) {
             Text("Назад")
         }
-        */
+
         Spacer(
             modifier = Modifier.height(16.dp)
         )
