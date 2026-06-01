@@ -13,28 +13,25 @@ class NobelRepositoryImpl(
         category: String?
     ): List<Laureate> {
 
-        val response = api.getPrizes(
-            year,
-            category
-        )
+        val prizes = api.getPrizes()
 
-        return response.nobelPrizes.flatMap { prize ->
-
-            prize.laureates.orEmpty().map { laureate ->
-
-                Laureate(
-                    id = laureate.fullName?.en ?: "",
-                    fullName = laureate.fullName?.en ?: "",
-                    year = prize.awardYear,
-                    category = prize.category.en,
-                    motivation = laureate.motivation?.en ?: "",
-                    country = laureate.birth
-                        ?.place
-                        ?.country
-                        ?.en ?: "Unknown",
-                    imageUrl = laureate.portraitUrl
-                )
+        return prizes
+            .filter {
+                (year == null || it.year == year) &&
+                        (category == null || it.category == category)
             }
-        }
+            .flatMap { prize ->
+                prize.laureates.map { laureate ->
+                    Laureate(
+                        id = laureate.id,
+                        fullName = laureate.fullName,
+                        year = prize.year,
+                        category = prize.category,
+                        motivation = laureate.motivation,
+                        country = laureate.country,
+                        imageUrl = null
+                    )
+                }
+            }
     }
 }

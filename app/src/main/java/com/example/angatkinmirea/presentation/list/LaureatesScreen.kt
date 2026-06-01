@@ -46,12 +46,12 @@ fun LaureatesScreen(
 
     val categories = listOf(
         CategoryItem("Все категории", ""),
-        CategoryItem("Physics", "phy"),
-        CategoryItem("Chemistry", "che"),
-        CategoryItem("Literature", "lit"),
-        CategoryItem("Peace", "pea"),
-        CategoryItem("Medicine", "med"),
-        CategoryItem("Economics", "eco")
+        CategoryItem("Physics", "Physics"),
+        CategoryItem("Chemistry", "Chemistry"),
+        CategoryItem("Literature", "Literature"),
+        CategoryItem("Peace", "Peace"),
+        CategoryItem("Medicine", "Medicine"),
+        CategoryItem("Economics", "Economics")
     )
 
     var selectedCategory by remember {
